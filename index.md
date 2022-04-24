@@ -3,6 +3,24 @@
 [![Coverage Status](https://coveralls.io/repos/github/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101348421/badge.svg?branch=main)](https://coveralls.io/github/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101348421?branch=main)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ULL-ESIT-INF-DSI-2122_ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101348421&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ULL-ESIT-INF-DSI-2122_ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101348421)
 
+# Indice
+- [Indice](#indice)
+- [Introducción](#introducción)
+  - [Note](#note)
+  - [Management](#management)
+    - [`exists`: Comprueba si existe un fichero con el nombre que le pasamos por parámetro.](#exists-comprueba-si-existe-un-fichero-con-el-nombre-que-le-pasamos-por-parámetro)
+    - [`addNote`: Añade una nota al directorio del usuario.](#addnote-añade-una-nota-al-directorio-del-usuario)
+    - [`getNotes`: Devuelve todas las notas del usuario.](#getnotes-devuelve-todas-las-notas-del-usuario)
+    - [`getNote`: Devuelve una nota del usuario.](#getnote-devuelve-una-nota-del-usuario)
+    - [`removeNote`: Elimina una nota del usuario.](#removenote-elimina-una-nota-del-usuario)
+  - [Note App](#note-app)
+    - [add: Añade una nota.](#add-añade-una-nota)
+    - [list: Lista todas las notas.](#list-lista-todas-las-notas)
+    - [read: Lee una nota.](#read-lee-una-nota)
+    - [remove: Elimina una nota.](#remove-elimina-una-nota)
+- [Conclusión](#conclusión)
+  
+
 # Introducción
 Esta práctica está enfocada al tratamiento y procesamiento de ficheros. Para ello, nos hemos servido de 'fs' y ficheros JSON que nos servirán para almacenar una serie de notas que podremos añadir, borrar, listar etc. Estas notas conllevarán un título, un cuerpo, un color y un usuario.
 
@@ -13,13 +31,15 @@ Como las notas llevan un color asignado, usaremos el módulo 'chalk' para poder 
 La clase 'Note' nos servirá para almacenar las notas. Posee un constructor que recibe un título, un cuerpo, un color y un usuario.
 
 ```typeScript
+type Color = 'red' | 'green' | 'blue' | 'yellow';
+
 export class note {
   public user: string;
   public title: string;
   public body: string;
-  public color: 'red' | 'green' | 'blue' | 'yellow';
+  public color: Color
 
-  constructor(user: string, title: string, body: string, color: 'red' | 'green' | 'blue' | 'yellow') {
+  constructor(user: string, title: string, body: string, color: Color) {
     this.user = user;
     this.title = title;
     this.body = body;
@@ -44,7 +64,7 @@ export class management {
 ```
 
 Además, tendrá los siguientes métodos:
-- `exists`: Comprueba si existe un fichero con el nombre que le pasamos por parámetro.
+### `exists`: Comprueba si existe un fichero con el nombre que le pasamos por parámetro.
 ```typeScript
   public exists(title: string, user: string): boolean {
     if (!fs.existsSync(this.dir)) {
@@ -65,7 +85,7 @@ Además, tendrá los siguientes métodos:
     return false;
   }
 ```
-- `addNote`: Añade una nota al directorio del usuario.
+### `addNote`: Añade una nota al directorio del usuario.
 ```typeScript
   public addNote(note: note, callback: (err: Error | null) => void): void {
     if (this.exists(note.title, note.user)) {
@@ -79,7 +99,7 @@ Además, tendrá los siguientes métodos:
     }
   }
 ```
-- `getNotes`: Devuelve todas las notas del usuario.
+### `getNotes`: Devuelve todas las notas del usuario.
 ```typeScript
   public getNotes(user: string | null, callback: (err: Error | null, notes: note[]) => void): void {
     const dir = this.dir + '/' + user;
@@ -98,7 +118,7 @@ Además, tendrá los siguientes métodos:
     }
   }
 ```
-- `getNote`: Devuelve una nota del usuario.
+### `getNote`: Devuelve una nota del usuario.
 ```typeScript
   public getNote(user: string, title: string, callback: (err: Error | null, note: note | null) => void): void {
     if (!this.exists(title, user)) {
@@ -110,7 +130,7 @@ Además, tendrá los siguientes métodos:
     callback(null, note);
   }
 ```
-- `removeNote`: Elimina una nota del usuario.
+### `removeNote`: Elimina una nota del usuario.
 ```typeScript
   public removeNote(user: string, title: string, callback: (err: Error | null) => void): void {
     if (!this.exists(title, user)) {
@@ -132,7 +152,7 @@ La clase 'NoteApp' es la encargada de gestionar la línea de comandos y la inter
 
 Para ello nos hemos servido de 'yargs' que nos permitirá gestionar los argumentos que nos pasan por la línea de comandos mediante `yargs.command` y `yargs.argv`.
 
-- add: Añade una nota.
+### add: Añade una nota.
 En el siguiente snippet de código se puede ver el funcionamiento de `yargs`. Primero establecemos el comando, la definición del mismo, y que parámetros va a tomar, además de si estos parámetros son obligatorios o no. Después, usaremos el `handler` para ejecutar código según esos parámetros.
 ```typeScript
 yargs
@@ -176,7 +196,7 @@ yargs
   },
 })
 ```
-- list: Lista todas las notas.
+### list: Lista todas las notas.
 ```typeScript
 .command({
   command: 'list',
@@ -203,7 +223,7 @@ yargs
   },
 })
 ```
-- read: Lee una nota.
+### read: Lee una nota.
 ```typeScript
 .command({
   command: 'read',
@@ -234,7 +254,7 @@ yargs
   },
 })
 ```
-- remove: Elimina una nota.
+### remove: Elimina una nota.
 ```typeScript
 .command({
   command: 'remove',

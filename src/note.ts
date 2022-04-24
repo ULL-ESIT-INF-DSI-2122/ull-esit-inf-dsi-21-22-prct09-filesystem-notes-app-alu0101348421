@@ -1,3 +1,6 @@
+/**
+ * Tipo de color que puede tener una nota
+ */
 type Color = 'red' | 'green' | 'blue' | 'yellow';
 
 /**

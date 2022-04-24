@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import * as yargs from 'yargs';
-import {note} from './note';
+import {Note} from './note';
 import {Management} from './management';
 
 /**
@@ -48,7 +48,7 @@ yargs
     },
   },
   handler: (argv) => {
-    const tmp = new note(argv.user as string, argv.title as string, argv.body as string, argv.color as 'red' | 'green' | 'blue' | 'yellow');
+    const tmp = new Note(argv.user as string, argv.title as string, argv.body as string, argv.color as 'red' | 'green' | 'blue' | 'yellow');
     gestor.addNote(tmp, (err) => {
       if (err == null) {
         console.log(chalk.green('Note added'));
@@ -113,7 +113,7 @@ yargs
       if (err) {
         console.log(chalk.red('Error: ' + err.message));
       } else {
-        const tmp = note as note;
+        const tmp = note as Note;
         const color = tmp.color === 'red' ? chalk.red : tmp.color === 'green' ? chalk.green : tmp.color === 'blue' ? chalk.blue : chalk.yellow;
         console.log(color.inverse(tmp.title));
         console.log(tmp.body);

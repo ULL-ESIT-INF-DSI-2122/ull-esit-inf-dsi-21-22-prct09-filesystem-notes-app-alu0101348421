@@ -1,20 +1,20 @@
 import 'mocha';
 import {expect} from 'chai';
-import {note} from '../src/note';
+import {Note} from '../src/note';
 import exp from 'constants';
 
 describe('Note', () => {
-  let note1: note;
-  let note2: note;
+  let note1: Note;
+  let note2: Note;
 
   beforeEach(() => {
-    note1 = new note('user', 'title', 'body', 'red');
-    note2 = new note('user', 'title', 'body', 'green');
+    note1 = new Note('user', 'title', 'body', 'red');
+    note2 = new Note('user', 'title', 'body', 'green');
   });
 
   it('should be a Note', () => {
-    expect(note1).to.be.an.instanceof(note);
-    expect(note2).to.be.an.instanceof(note);
+    expect(note1).to.be.an.instanceof(Note);
+    expect(note2).to.be.an.instanceof(Note);
   });
 
   it('should have a user', () => {

@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import {note} from './note';
+import {Note} from './note';
 
 /**
  * Dirección por defecto de la base de datos
@@ -53,7 +53,7 @@ export class Management {
    * @param note Nota a añadir
    * @param callback Función de callback con error
    */
-  public addNote(note: note, callback: (err: Error | null) => void): void {
+  public addNote(note: Note, callback: (err: Error | null) => void): void {
     if (this.exists(note.title, note.user)) {
       callback(new Error('Note already exists'));
     } else {
@@ -70,13 +70,13 @@ export class Management {
    * @param user Usuario de las notas
    * @param callback Función de callback con error y notas
    */
-  public getNotes(user: string | null, callback: (err: Error | null, notes: note[]) => void): void {
+  public getNotes(user: string | null, callback: (err: Error | null, notes: Note[]) => void): void {
     const dir = this.dir + '/' + user;
     if (!fs.existsSync(dir)) {
       callback(new Error('User not found'), []);
     } else {
       const files = fs.readdirSync(dir, { withFileTypes: true });
-      const notes: note[] = [];
+      const notes: Note[] = [];
       for (const file of files) {
         if (file.isFile()) {
           const note = JSON.parse(fs.readFileSync(dir + '/' + file.name, 'utf8'));
@@ -93,7 +93,7 @@ export class Management {
    * @param title Título de la nota
    * @param callback Función de callback con error y nota
    */
-  public getNote(user: string, title: string, callback: (err: Error | null, note: note | null) => void): void {
+  public getNote(user: string, title: string, callback: (err: Error | null, note: Note | null) => void): void {
     if (!this.exists(title, user)) {
       callback(new Error('Note not found'), null);
       return

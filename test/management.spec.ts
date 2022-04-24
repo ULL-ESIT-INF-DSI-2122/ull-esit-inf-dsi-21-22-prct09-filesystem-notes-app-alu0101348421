@@ -1,16 +1,16 @@
 import 'mocha';
 import {expect} from 'chai';
 import {Management} from '../src/management';
-import {note} from '../src/note';
+import {Note} from '../src/note';
 
 describe('Management', () => {
-  let note1: note;
-  let note2: note;
+  let note1: Note;
+  let note2: Note;
   let manager: Management;
 
   beforeEach(() => {
-    note1 = new note('user1', 'title1', 'body1', 'red');
-    note2 = new note('user2', 'title2', 'body2', 'green');
+    note1 = new Note('user1', 'title1', 'body1', 'red');
+    note2 = new Note('user2', 'title2', 'body2', 'green');
     manager = new Management();
   });
 

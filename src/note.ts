@@ -2,7 +2,7 @@
  * Clase que representa una nota
  * @class
  */
-export class note {
+export class Note {
   public user: string;
   public title: string;
   public body: string;

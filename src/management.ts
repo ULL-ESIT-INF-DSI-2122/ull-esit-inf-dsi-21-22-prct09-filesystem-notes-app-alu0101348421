@@ -70,15 +70,14 @@ export class Management {
    * @param callback Función de callback con error y notas
    */
   public getNotes(user: string | null, callback: (err: Error | null, notes: Note[]) => void): void {
-    const dir = `${this.dir}/${user}`;
-    if (!fs.existsSync(dir)) {
+    if (!fs.existsSync(`${this.dir}/${user}`)) {
       callback(new Error('User not found'), []);
     } else {
-      const files = fs.readdirSync(dir, { withFileTypes: true });
+      const files = fs.readdirSync(`${this.dir}/${user}`, { withFileTypes: true });
       const notes: Note[] = [];
       for (const file of files) {
         if (file.isFile()) {
-          const note = JSON.parse(fs.readFileSync(dir + '/' + file.name, 'utf8'));
+          const note = JSON.parse(fs.readFileSync(`${this.dir}/${user}/${file.name}`, 'utf8'));
           notes.push(note);
         }
       }

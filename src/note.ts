@@ -1,3 +1,5 @@
+type Color = 'red' | 'green' | 'blue' | 'yellow';
+
 /**
  * Clase que representa una nota
  * @class
@@ -6,7 +8,7 @@ export class Note {
   public user: string;
   public title: string;
   public body: string;
-  public color: 'red' | 'green' | 'blue' | 'yellow';
+  public color: Color;
 
   /**
    * Constructor de la clase
@@ -15,7 +17,7 @@ export class Note {
    * @param body Contenido de la nota
    * @param color Color de la nota
    */
-  constructor(user: string, title: string, body: string, color: 'red' | 'green' | 'blue' | 'yellow') {
+  constructor(user: string, title: string, body: string, color: Color) {
     this.user = user;
     this.title = title;
     this.body = body;

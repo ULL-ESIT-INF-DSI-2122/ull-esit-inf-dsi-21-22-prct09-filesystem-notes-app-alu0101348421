@@ -62,7 +62,7 @@ describe('Management', () => {
     expect(manager.getNote).to.be.a('function');
     expect(manager.getNote(note1.user, note1.title, (err, noteTmp) => {
       expect(err).to.be.null;
-      const tmp = noteTmp as note;
+      const tmp = noteTmp as Note;
       expect(tmp.user).to.equal(note1.user);
       expect(tmp.title).to.equal(note1.title);
       expect(tmp.body).to.equal(note1.body);
@@ -70,7 +70,7 @@ describe('Management', () => {
     }));
     expect(manager.getNote(note2.user, note2.title, (err, noteTmp) => {
       expect(err).to.be.null;
-      const tmp = noteTmp as note;
+      const tmp = noteTmp as Note;
       expect(tmp.user).to.equal(note2.user);
       expect(tmp.title).to.equal(note2.title);
       expect(tmp.body).to.equal(note2.body);

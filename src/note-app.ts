@@ -13,7 +13,8 @@ const gestor = new management();
  * Yargs para la línea de comandos
  * @type {yargs}
  */
-yargs.command({
+yargs
+.command({
   /**
    * Comando para añadir una nota
    * @param user Usuario de la nota

@@ -33,11 +33,10 @@ export class Management {
     if (!fs.existsSync(this.dir)) {
       fs.mkdirSync(this.dir);
     }
-    const dir = this.dir + '/' + user;
-    if (!fs.existsSync(dir)) {
+    if (!fs.existsSync(this.dir + '/' + user)) {
       return false;
     }
-    const files = fs.readdirSync(dir, { withFileTypes: true });
+    const files = fs.readdirSync(this.dir + '/' + user, { withFileTypes: true });
     for (const file of files) {
       if (file.isFile()) {
         if (file.name === title + '.json') {

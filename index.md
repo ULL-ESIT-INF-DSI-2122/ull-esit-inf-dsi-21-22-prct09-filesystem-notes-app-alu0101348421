@@ -1,4 +1,5 @@
 <br>
+[![Tests](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101348421/actions/workflows/test.js.yml/badge.svg)](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101348421/actions/workflows/test.js.yml)
 [![Coverage Status](https://coveralls.io/repos/github/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101348421/badge.svg?branch=main)](https://coveralls.io/github/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101348421?branch=main)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ULL-ESIT-INF-DSI-2122_ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101348421&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ULL-ESIT-INF-DSI-2122_ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101348421)
 
@@ -43,9 +44,12 @@ export class management {
 ```
 
 Además, tendrá los siguientes métodos:
-- `exist`: Comprueba si existe un fichero con el nombre que le pasamos por parámetro.
+- `exists`: Comprueba si existe un fichero con el nombre que le pasamos por parámetro.
 ```typeScript
   public exists(title: string, user: string): boolean {
+    if (!fs.existsSync(this.dir)) {
+      fs.mkdirSync(this.dir);
+    }
     const dir = this.dir + '/' + user;
     if (!fs.existsSync(dir)) {
       return false;
@@ -262,6 +266,12 @@ yargs
 ```
 
 Por último, añadiremos `.help()` para que muestre la ayuda al usuario y ofrecerle una lista de comandos.
+
+```typeScript
+.help();
+
+yargs.parse();
+```
 
 A lo largo de la ejecución de esta clase, se puede ver que hemos usado chalk para colorear los mensajes de error, éxito y las propias notas.
 

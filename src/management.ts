@@ -33,10 +33,10 @@ export class Management {
     if (!fs.existsSync(this.dir)) {
       fs.mkdirSync(this.dir);
     }
-    if (!fs.existsSync(this.dir + '/' + user)) {
+    if (!fs.existsSync(`${this.dir}/${user}`)) {
       return false;
     }
-    const files = fs.readdirSync(this.dir + '/' + user, { withFileTypes: true });
+    const files = fs.readdirSync(`${this.dir}/${user}`, { withFileTypes: true });
     for (const file of files) {
       if (file.isFile()) {
         if (file.name === title + '.json') {
@@ -56,10 +56,10 @@ export class Management {
     if (this.exists(note.title, note.user)) {
       callback(new Error('Note already exists'));
     } else {
-      if (!fs.existsSync(this.dir + '/' + note.user)) {
-        fs.mkdirSync(this.dir + '/' + note.user);
+      if (!fs.existsSync(`${this.dir}/${note.user}`)) {
+        fs.mkdirSync(`${this.dir}/${note.user}`);
       }
-      fs.writeFileSync(this.dir + '/' + note.user + '/' + note.title + '.json', JSON.stringify(note));
+      fs.writeFileSync(`${this.dir}/${note.user}/${note.title}.json`, JSON.stringify(note));
       callback(null);
     }
   }
@@ -70,7 +70,7 @@ export class Management {
    * @param callback Función de callback con error y notas
    */
   public getNotes(user: string | null, callback: (err: Error | null, notes: Note[]) => void): void {
-    const dir = this.dir + '/' + user;
+    const dir = `${this.dir}/${user}`;
     if (!fs.existsSync(dir)) {
       callback(new Error('User not found'), []);
     } else {
@@ -97,8 +97,7 @@ export class Management {
       callback(new Error('Note not found'), null);
       return
     }
-    const dir = this.dir + '/' + user;
-    const note = JSON.parse(fs.readFileSync(dir + '/' + title + '.json', 'utf8'));
+    const note = JSON.parse(fs.readFileSync(`${this.dir}/${user}/${title}.json`, 'utf8'));
     callback(null, note);
   }
 
@@ -112,8 +111,7 @@ export class Management {
     if (!this.exists(title, user)) {
       callback(new Error('Note not found'));
     } else {
-      const dir = this.dir + '/' + user;
-      fs.unlinkSync(dir + '/' + title + '.json');
+      fs.unlinkSync(`${this.dir}/${user}/${title}.json`);
       callback(null);
     }
   }

@@ -30,6 +30,9 @@ export class management {
    * @returns {boolean}
    */
   public exists(title: string, user: string): boolean {
+    if (!fs.existsSync(this.dir)) {
+      fs.mkdirSync(this.dir);
+    }
     const dir = this.dir + '/' + user;
     if (!fs.existsSync(dir)) {
       return false;

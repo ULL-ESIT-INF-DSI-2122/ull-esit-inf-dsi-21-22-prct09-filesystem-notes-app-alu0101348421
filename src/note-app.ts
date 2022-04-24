@@ -153,5 +153,6 @@ yargs
     });
   },
 })
-.help()
-.argv;
+.help();
+
+yargs.parse();

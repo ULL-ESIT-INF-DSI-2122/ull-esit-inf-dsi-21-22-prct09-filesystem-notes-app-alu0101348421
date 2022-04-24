@@ -1,4 +1,6 @@
 <br>
+[![Coverage Status](https://coveralls.io/repos/github/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101348421/badge.svg?branch=main)](https://coveralls.io/github/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101348421?branch=main)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ULL-ESIT-INF-DSI-2122_ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101348421&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ULL-ESIT-INF-DSI-2122_ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101348421)
 
 # Introducción
 Esta práctica está enfocada al tratamiento y procesamiento de ficheros. Para ello, nos hemos servido de 'fs' y ficheros JSON que nos servirán para almacenar una serie de notas que podremos añadir, borrar, listar etc. Estas notas conllevarán un título, un cuerpo, un color y un usuario.

@@ -1,13 +1,13 @@
 import chalk from 'chalk';
 import * as yargs from 'yargs';
 import {note} from './note';
-import {management} from './management';
+import {Management} from './management';
 
 /**
  * Objeto de manejo de notas
  * @type {management}
  */
-const gestor = new management();
+const gestor = new Management();
 
 /**
  * Yargs para la línea de comandos

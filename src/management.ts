@@ -6,14 +6,14 @@ import {note} from './note';
  * @type {string}
  * @constant
  */
-const DIR = './src/db';
+const DIR = './db';
 
 /**
  * Clase que gestiona las notas
  * @class
  */
-export class management {
-  private dir: string;
+export class Management {
+  readonly dir: string;
 
   /**
    * Constructor de la clase

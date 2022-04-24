@@ -1,21 +1,21 @@
 import 'mocha';
 import {expect} from 'chai';
-import {management} from '../src/management';
+import {Management} from '../src/management';
 import {note} from '../src/note';
 
 describe('Management', () => {
   let note1: note;
   let note2: note;
-  let manager: management;
+  let manager: Management;
 
   beforeEach(() => {
     note1 = new note('user1', 'title1', 'body1', 'red');
     note2 = new note('user2', 'title2', 'body2', 'green');
-    manager = new management();
+    manager = new Management();
   });
 
   it('should be a Management', () => {
-    expect(manager).to.be.an.instanceof(management);
+    expect(manager).to.be.an.instanceof(Management);
   });
 
   it('should have an addNote method', () => {

@@ -1,6 +1,6 @@
 import 'mocha';
 import {expect} from 'chai';
-import {AddMapReduce} from '../src/AddMapReduce';
+import {AddMapReduce} from '../../src/mod/AddMapReduce';
 
 describe('AddMapReduce', () => {
   let numbers: number[];

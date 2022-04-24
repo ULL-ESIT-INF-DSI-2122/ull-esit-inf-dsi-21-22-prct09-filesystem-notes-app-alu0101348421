@@ -1,6 +1,6 @@
 import 'mocha';
 import {expect} from 'chai';
-import {SubMapReduce} from '../src/SubMapReduce';
+import {SubMapReduce} from '../../src/mod/SubMapReduce';
 
 describe('SubMapReduce', () => {
   let numbers: number[];

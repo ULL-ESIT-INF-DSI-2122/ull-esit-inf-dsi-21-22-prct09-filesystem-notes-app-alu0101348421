@@ -7,15 +7,22 @@
     "test": "mocha",
     "coverage": "nyc npm test",
     "coveralls": "nyc npm test && nyc report --reporter=lcov",
-    "doc": "typedoc"
+    "doc": "typedoc",
+    "start": "tsc && node dist/note-app.js add --user=\"FNDme\" --title=\"Si\" --body=\"esto es una nota\" --color=\"red\"",
+    "note": "tsc && node dist/management.js"
+  },
+  "nyc": {
+    "exclude": "./src/note-app.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Gabriel A. Luis Freitas",
   "license": "ISC",
   "devDependencies": {
     "@types/chai": "^4.3.1",
     "@types/mocha": "^9.1.0",
+    "@types/yargs": "^17.0.10",
     "chai": "^4.3.6",
+    "chalk": "^4.1.2",
     "coveralls": "^3.1.1",
     "eslint": "^8.13.0",
     "eslint-config-google": "^0.14.0",
@@ -23,7 +30,8 @@
     "nyc": "^15.1.0",
     "ts-node": "^10.7.0",
     "tsc-watch": "^5.0.3",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.3",
+    "yargs": "^17.4.1"
   },
   "dependencies": {
     "typedoc": "^0.22.15"

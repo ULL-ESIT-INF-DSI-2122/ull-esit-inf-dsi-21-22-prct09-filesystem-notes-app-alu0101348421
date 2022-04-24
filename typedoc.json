@@ -1,10 +1,13 @@
 {
   "entryPoints": [
-    "src/MapReduce.ts",
-    "src/AddMapReduce.ts",
-    "src/SubMapReduce.ts",
-    "src/ProdMapReduce.ts",
-    "src/DivMapReduce.ts"
+    "src/mod/MapReduce.ts",
+    "src/mod/AddMapReduce.ts",
+    "src/mod/SubMapReduce.ts",
+    "src/mod/ProdMapReduce.ts",
+    "src/mod/DivMapReduce.ts",
+    "src/management.ts",
+    "src/note-app.ts",
+    "src/note.ts"
   ],
   "out": "./docs"
 }

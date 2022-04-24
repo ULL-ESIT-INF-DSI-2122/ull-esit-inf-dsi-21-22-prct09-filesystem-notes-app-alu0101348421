@@ -1,6 +1,6 @@
 import 'mocha';
 import {expect} from 'chai';
-import {ProdMapReduce} from '../src/ProdMapReduce';
+import {ProdMapReduce} from '../../src/mod/ProdMapReduce';
 
 describe('ProdMapReduce', () => {
   let numbers: number[];

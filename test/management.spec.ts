@@ -32,6 +32,8 @@ describe('Management', () => {
     expect(manager.exists).to.be.a('function');
     expect(manager.exists(note1.title, note1.user)).to.be.true;
     expect(manager.exists(note2.title, note2.user)).to.be.true;
+    expect(manager.exists('title3', 'user1')).to.be.false;
+    expect(manager.exists('title1', 'user2')).to.be.false;
   });
 
   it('should have a getNotes method', () => {
